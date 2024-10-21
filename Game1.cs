@@ -12,6 +12,8 @@ namespace Monogame_Topic_5___Making_a_Class
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
+        Ghost ghost1;
+
         MouseState mouseState;
 
         Random genrator = new Random();
@@ -52,6 +54,9 @@ namespace Monogame_Topic_5___Making_a_Class
             windowRect = new Rectangle(0, 0, 800, 600);
 
             base.Initialize();
+
+            ghost1 = new Ghost(ghostTextures, new Rectangle(150, 250, 40, 40));
+
         }
 
         protected override void LoadContent()
@@ -86,7 +91,7 @@ namespace Monogame_Topic_5___Making_a_Class
             GraphicsDevice.Clear(Color.CornflowerBlue);
             _spriteBatch.Begin();
             _spriteBatch.Draw(backgroundTexture, windowRect, Color.White);
-
+            ghost1.Draw(_spriteBatch);
 
             _spriteBatch.End();
             base.Draw(gameTime);
