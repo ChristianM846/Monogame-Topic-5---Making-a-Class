@@ -24,6 +24,11 @@ namespace Monogame_Topic_5___Making_a_Class
           get { return _location; }
         }
 
+        public bool Contains(Point player)
+        {
+            return _location.Contains(player);
+        }
+
         public Ghost (List<Texture2D> textures, Rectangle location)
         {
             _textures = textures;

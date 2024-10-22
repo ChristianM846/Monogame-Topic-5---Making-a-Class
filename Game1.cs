@@ -15,6 +15,7 @@ namespace Monogame_Topic_5___Making_a_Class
         Ghost ghost1;
 
         MouseState mouseState;
+        KeyboardState keyboardState;
 
         Random genrator = new Random();
 
@@ -48,6 +49,8 @@ namespace Monogame_Topic_5___Making_a_Class
 
         protected override void Initialize()
         {
+            screen = Screen.Title;
+
             genrator = new Random();
             ghostTextures = new List<Texture2D>();
 
@@ -82,7 +85,29 @@ namespace Monogame_Topic_5___Making_a_Class
                 Exit();
 
             mouseState = Mouse.GetState();
-            ghost1.Update(gameTime, mouseState);
+            keyboardState = Keyboard.GetState();
+
+            if (screen == Screen.Title)
+            {
+                if (keyboardState.IsKeyDown(Keys.Enter))
+                {
+                    screen = Screen.House;
+                }
+            }
+            else if (screen == Screen.House)
+            {
+                ghost1.Update(gameTime, mouseState);
+
+                if (ghost1.Contains(mouseState.Position))
+                {
+                    screen = Screen.End;
+                }
+
+            }
+
+
+
+
 
             base.Update(gameTime);
         }
@@ -91,8 +116,20 @@ namespace Monogame_Topic_5___Making_a_Class
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
             _spriteBatch.Begin();
+
+            if (screen == Screen.Title)
+            {
+                _spriteBatch.Draw(titleTexture, windowRect, Color.White);
+            }
+            else if (screen == Screen.House)
+            {
             _spriteBatch.Draw(backgroundTexture, windowRect, Color.White);
             ghost1.Draw(_spriteBatch);
+            }
+            else if (screen == Screen.End)
+            {
+                _spriteBatch.Draw(endTexture, windowRect, Color.White);
+            }
 
             _spriteBatch.End();
             base.Draw(gameTime);
