@@ -59,7 +59,6 @@ namespace Monogame_Topic_5___Making_a_Class
             base.Initialize();
 
             ghost1 = new Ghost(ghostTextures, new Rectangle(150, 250, 40, 40));
-
         }
 
         protected override void LoadContent()
@@ -102,13 +101,7 @@ namespace Monogame_Topic_5___Making_a_Class
                 {
                     screen = Screen.End;
                 }
-
             }
-
-
-
-
-
             base.Update(gameTime);
         }
 
@@ -123,8 +116,8 @@ namespace Monogame_Topic_5___Making_a_Class
             }
             else if (screen == Screen.House)
             {
-            _spriteBatch.Draw(backgroundTexture, windowRect, Color.White);
-            ghost1.Draw(_spriteBatch);
+                _spriteBatch.Draw(backgroundTexture, windowRect, Color.White);
+                ghost1.Draw(_spriteBatch);
             }
             else if (screen == Screen.End)
             {

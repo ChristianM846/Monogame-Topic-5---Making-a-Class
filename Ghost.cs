@@ -91,8 +91,6 @@ namespace Monogame_Topic_5___Making_a_Class
                 }
             }
 
-
-
             _location.Offset(_speed);
         }
 
