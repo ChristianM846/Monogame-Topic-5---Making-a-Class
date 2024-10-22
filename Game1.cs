@@ -82,7 +82,7 @@ namespace Monogame_Topic_5___Making_a_Class
                 Exit();
 
             mouseState = Mouse.GetState();
-            ghost1.Update(mouseState);
+            ghost1.Update(gameTime, mouseState);
 
             base.Update(gameTime);
         }
